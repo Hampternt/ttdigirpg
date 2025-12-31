@@ -9,3 +9,5 @@ pub mod entities;
 
 #[path = "lib/systems/mod.rs"]
 pub mod systems;
+
+pub mod demo;

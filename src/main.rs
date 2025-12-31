@@ -1,4 +1,4 @@
-use ttdigirpg::character::Character;
+use ttdigirpg::entities::character::Character;
 
 fn main() {
     println!("=== TTRPG System Demo ===\n");

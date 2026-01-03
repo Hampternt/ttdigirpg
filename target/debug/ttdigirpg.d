@@ -1,1 +1,0 @@
-/home/hampter/projects/ttdigirpg/target/debug/ttdigirpg: /home/hampter/projects/ttdigirpg/src/lib/entities/character.rs /home/hampter/projects/ttdigirpg/src/lib/entities/mod.rs /home/hampter/projects/ttdigirpg/src/lib/systems/mod.rs /home/hampter/projects/ttdigirpg/src/lib.rs /home/hampter/projects/ttdigirpg/src/main.rs

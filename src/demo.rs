@@ -1,3 +1,5 @@
+use crate::entities::character::Character;
+
 pub fn demo() {
     println!("=== TTRPG System Demo ===\n");
 

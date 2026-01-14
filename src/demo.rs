@@ -1,5 +1,10 @@
+use crate::entities::character::Character;
+
 pub fn demo() {
     println!("=== TTRPG System Demo ===\n");
+
+    // Check for database and create new databse if no database found on start.
+    
 
     // Create a default character
     let default_char = Character::new("Default Character".to_string());

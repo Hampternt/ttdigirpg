@@ -8,11 +8,8 @@ pub struct EconomicEntity {
     pub value: i32,
 }
 
-impl EconomicEntity {
-    fn save_to_file() -> Self {
-        let json = serde_json::to_string(&Self)?;
-    }
-}
+// impl _EconomicEntity {
+// }
 
 
 #[derive(Serialize, Deserialize)]

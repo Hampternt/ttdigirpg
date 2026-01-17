@@ -1,10 +1,11 @@
 use crate::entities::character::Character;
+use crate::entities::database::Database;
 
 pub fn demo() {
     println!("=== TTRPG System Demo ===\n");
 
     // Check for database and create new databse if no database found on start.
-    
+    let _db = Database::new("src/database/game_data.db").expect("Failed to initialize database");
 
     // Create a default character
     let default_char = Character::new("Default Character".to_string());
@@ -41,6 +42,10 @@ pub fn demo() {
 
     println!("Created a customized character:\n");
     skilled_char.display();
+
+    let default_char = Character::new("Default Character".to_string());
+    println!("Created a new character with default stats:\n");
+    default_char.display();
 
     println!("\n\n=== Demo Complete ===");
 }

@@ -2,6 +2,11 @@
 /target/
 Cargo.lock
 
+# Database files
+*.Database
+*.db-shm
+*.db-wal
+
 # Editor/IDE files
 .vscode/
 .idea/

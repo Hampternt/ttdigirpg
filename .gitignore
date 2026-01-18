@@ -18,3 +18,10 @@ Cargo.lock
 # OS files
 .DS_Store
 Thumbs.db
+
+# Binary images (keep in wiki or external docs)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp

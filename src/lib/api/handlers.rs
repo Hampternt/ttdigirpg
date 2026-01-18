@@ -10,96 +10,113 @@ pub async fn update_controls(
     State(db): State<Arc<Mutex<Database>>>,
     Json(payload): Json<UpdateControlsRequest>,
 ) -> Result<Json<SuccessResponse>, (StatusCode, Json<ErrorResponse>)> {
-    // Lock the database for the duration of this operation
-    let db = db.lock().await;
-    // Query database for existing character
-    let existing_character = db
-        .get_character(&payload.character_name, &payload.game)
-        .map_err(|e| {
-            (
-                StatusCode::INTERNAL_SERVER_ERROR,
-                Json(ErrorResponse {
-                    success: false,
-                    error: format!("Database query error: {}", e),
-                }),
-            )
-        })?;
+    // Validate input first (no lock needed)
+    if let Err(e) = payload.validate() {
+        return Err((
+            StatusCode::BAD_REQUEST,
+            Json(ErrorResponse {
+                success: false,
+                error: format!("Validation error: {}", e),
+            }),
+        ));
+    }
 
-    let character_uuid = match existing_character {
-        Some((uuid, _name, _game, data)) => {
-            // Character exists - update controls in existing data
-            let mut character_data: Value = if let Some(data_str) = data {
-                serde_json::from_str(&data_str).map_err(|e| {
-                    (
-                        StatusCode::INTERNAL_SERVER_ERROR,
-                        Json(ErrorResponse {
-                            success: false,
-                            error: format!("Failed to parse existing character data: {}", e),
-                        }),
-                    )
-                })?
-            } else {
-                json!({})
-            };
+    // Prepare JSON data for controls (no lock needed)
+    let controls_json = json!(payload.controls);
 
-            // Replace or add controls array
-            character_data["controls"] = json!(payload.controls);
+    // Lock only for database operations
+    let character_uuid = {
+        let db = db.lock().await;
 
-            // Serialize back to string
-            let updated_data = serde_json::to_string(&character_data).map_err(|e| {
+        // Query database for existing character
+        let existing_character = db
+            .get_character(&payload.character_name, &payload.game)
+            .map_err(|e| {
                 (
                     StatusCode::INTERNAL_SERVER_ERROR,
                     Json(ErrorResponse {
                         success: false,
-                        error: format!("Failed to serialize character data: {}", e),
+                        error: format!("Database query error: {}", e),
                     }),
                 )
             })?;
 
-            // Update in database
-            db.update_character(&payload.character_name, &payload.game, &updated_data)
-                .map_err(|e| {
+        match existing_character {
+            Some((uuid, _name, _game, data)) => {
+                // Character exists - update controls in existing data
+                let mut character_data: Value = if let Some(data_str) = data {
+                    serde_json::from_str(&data_str).map_err(|e| {
+                        (
+                            StatusCode::INTERNAL_SERVER_ERROR,
+                            Json(ErrorResponse {
+                                success: false,
+                                error: format!("Failed to parse existing character data: {}", e),
+                            }),
+                        )
+                    })?
+                } else {
+                    json!({})
+                };
+
+                // Replace or add controls array
+                character_data["controls"] = controls_json;
+
+                // Serialize back to string
+                let updated_data = serde_json::to_string(&character_data).map_err(|e| {
                     (
                         StatusCode::INTERNAL_SERVER_ERROR,
                         Json(ErrorResponse {
                             success: false,
-                            error: format!("Failed to update character: {}", e),
+                            error: format!("Failed to serialize character data: {}", e),
                         }),
                     )
                 })?;
 
-            uuid
-        }
-        None => {
-            // Character doesn't exist - create new with controls
-            let character_data = json!({
-                "controls": payload.controls
-            });
+                // Update in database
+                db.update_character(&payload.character_name, &payload.game, &updated_data)
+                    .map_err(|e| {
+                        (
+                            StatusCode::INTERNAL_SERVER_ERROR,
+                            Json(ErrorResponse {
+                                success: false,
+                                error: format!("Failed to update character: {}", e),
+                            }),
+                        )
+                    })?;
 
-            let data_str = serde_json::to_string(&character_data).map_err(|e| {
-                (
-                    StatusCode::INTERNAL_SERVER_ERROR,
-                    Json(ErrorResponse {
-                        success: false,
-                        error: format!("Failed to serialize new character data: {}", e),
-                    }),
-                )
-            })?;
+                uuid
+            }
+            None => {
+                // Character doesn't exist - create new with controls
+                let character_data = json!({
+                    "controls": controls_json
+                });
 
-            db.insert_character(&payload.character_name, &payload.game, Some(&data_str))
-                .map_err(|e| {
+                let data_str = serde_json::to_string(&character_data).map_err(|e| {
                     (
                         StatusCode::INTERNAL_SERVER_ERROR,
                         Json(ErrorResponse {
                             success: false,
-                            error: format!("Failed to insert character: {}", e),
+                            error: format!("Failed to serialize new character data: {}", e),
                         }),
                     )
-                })?
-        }
-    };
+                })?;
 
-    // Parse UUID for response
+                db.insert_character(&payload.character_name, &payload.game, Some(&data_str))
+                    .map_err(|e| {
+                        (
+                            StatusCode::INTERNAL_SERVER_ERROR,
+                            Json(ErrorResponse {
+                                success: false,
+                                error: format!("Failed to insert character: {}", e),
+                            }),
+                        )
+                    })?
+            }
+        }
+    }; // Lock released here
+
+    // Parse UUID for response (no lock needed)
     let uuid = uuid::Uuid::parse_str(&character_uuid).map_err(|e| {
         (
             StatusCode::INTERNAL_SERVER_ERROR,

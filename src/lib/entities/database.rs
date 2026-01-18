@@ -3,6 +3,7 @@
 //! and provides constructors for both shared and user-specific databases.
 use rusqlite::{Connection, Result};
 use std::path::Path;
+use uuid::Uuid;
 
 /// Wrapper around a SQLite database connection for game data persistence.
 ///
@@ -11,7 +12,6 @@ use std::path::Path;
 /// dynamically-named user/character-specific databases.
 pub struct Database {
     /// The underlying SQLite connection
-    #[allow(dead_code)]
     conn: Connection,
 }
 
@@ -38,18 +38,23 @@ impl Database {
     /// ```
     /// use ttdigirpg::entities::database::Database;
     ///
-    /// let db = Database::new("data/my_game.db").expect("Failed to create database");
+    /// // Use :memory: for in-memory database in examples/tests
+    /// let db = Database::new(":memory:").expect("Failed to create database");
+    /// // Database created successfully if we get here
     /// ```
     pub fn new(db_path: &str) -> Result<Self> {
         // Check if database file already exists
         let db_exists = Path::new(db_path).exists();
         let conn = Connection::open(db_path)?;
 
+        // Enable foreign key constraints
+        conn.execute("PRAGMA foreign_keys = ON", [])?;
+
         if !db_exists {
             println!("Creating new Database! At {}", db_path);
             Self::create_tables(&conn)?;
         } else {
-            println!("opening existing databse databse at {}", db_path);
+            println!("Opening existing database at {}", db_path);
         }
 
         Ok(Database { conn })
@@ -78,26 +83,26 @@ impl Database {
     /// ```
     /// use ttdigirpg::entities::database::Database;
     ///
-    /// // Creates database at "saves/Veteran_Investigator.db"
-    /// let db = Database::_new_fn_name("saves/", "Veteran Investigator")
+    /// // Use :memory: for in-memory database in examples/tests
+    /// let db = Database::new_with_name(":memory:", "Veteran Investigator")
     ///     .expect("Failed to create character database");
+    /// // Database created successfully with sanitized name
     /// ```
     ///
-    /// # Note
-    ///
-    /// The underscore prefix should be removed once a proper function name is chosen.
-    /// Consider renaming to `new_for_user` or `new_with_name`.
-    pub fn _new_fn_name(db_path: &str, name: &str) -> Result<Self> {
+    pub fn new_with_name(db_path: &str, name: &str) -> Result<Self> {
         let full_name_string_path: String = Database::name_combiner(db_path, name);
 
         let full_name_string_path_exists: bool = Path::new(&full_name_string_path).exists();
         let conn = Connection::open(full_name_string_path)?;
 
+        // Enable foreign key constraints
+        conn.execute("PRAGMA foreign_keys = ON", [])?;
+
         if !full_name_string_path_exists {
             println!("Creating new Database! At {}", db_path);
             Self::create_tables(&conn)?;
         } else {
-            println!("opening existing databse databse at {}", db_path);
+            println!("Opening existing database at {}", db_path);
         }
 
         Ok(Database { conn })
@@ -127,7 +132,7 @@ impl Database {
     /// ```
     /// use ttdigirpg::entities::database::Database;
     ///
-    /// let path = Database::name_combiner("data/saves/", "My Character.db");
+    /// let path = Database::name_combiner("data/saves/", "My Character");
     /// assert_eq!(path, "data/saves/My_Character.db");
     /// ```
     pub fn name_combiner(word1: &str, word2: &str) -> String {
@@ -139,7 +144,13 @@ impl Database {
             .map(|c| if c == ' ' { '_' } else { c })
             .collect::<String>();
 
-        combined
+        println!("{combined}");
+
+        if combined.ends_with(".db") {
+            combined
+        } else {
+            combined + ".db"
+        }
     }
 
     /// Initializes database tables for a new database.
@@ -163,11 +174,11 @@ impl Database {
         // Characters table - stores character data with game context
         conn.execute(
             "CREATE TABLE characters (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                uuid TEXT NOT NULL UNIQUE,
                 name TEXT NOT NULL,
                 game TEXT NOT NULL,
                 data TEXT,
-                UNIQUE(name, game)
+                PRIMARY KEY (name, game)
             )",
             [],
         )?;
@@ -191,7 +202,8 @@ impl Database {
                 character_name TEXT NOT NULL,
                 object_id INTEGER NOT NULL,
                 quantity INTEGER DEFAULT 1,
-                FOREIGN KEY (object_id) REFERENCES objects(id)
+                FOREIGN KEY (object_id) REFERENCES objects(id) ON DELETE CASCADE,
+                FOREIGN KEY (character_name, game) REFERENCES characters(name, game) ON DELETE CASCADE
             )",
             [],
         )?;
@@ -215,7 +227,7 @@ impl Database {
     ///
     /// # Returns
     ///
-    /// Returns the ID of the newly inserted character, or an error if insertion fails
+    /// Returns the UUID of the newly inserted character, or an error if insertion fails
     /// (e.g., if a character with the same name already exists in this game).
     ///
     /// # Examples
@@ -224,14 +236,15 @@ impl Database {
     /// use ttdigirpg::entities::database::Database;
     ///
     /// let db = Database::new(":memory:").unwrap();
-    /// let id = db.insert_character("Alice", "Knives Out", Some("{\"level\": 5}")).unwrap();
+    /// let uuid = db.insert_character("Alice", "Knives Out", Some("{\"level\": 5}")).unwrap();
     /// ```
-    pub fn insert_character(&self, name: &str, game: &str, data: Option<&str>) -> Result<i64> {
+    pub fn insert_character(&self, name: &str, game: &str, data: Option<&str>) -> Result<String> {
+        let uuid = Uuid::new_v4().to_string();
         self.conn.execute(
-            "INSERT INTO characters (name, game, data) VALUES (?1, ?2, ?3)",
-            (name, game, data),
+            "INSERT INTO characters (uuid, name, game, data) VALUES (?1, ?2, ?3, ?4)",
+            (&uuid, name, game, data),
         )?;
-        Ok(self.conn.last_insert_rowid())
+        Ok(uuid)
     }
 
     /// Retrieves a character from the database.
@@ -243,15 +256,15 @@ impl Database {
     ///
     /// # Returns
     ///
-    /// Returns `Some((id, name, game, data))` if found, or `None` if not found.
+    /// Returns `Some((uuid, name, game, data))` if found, or `None` if not found.
     pub fn get_character(
         &self,
         name: &str,
         game: &str,
-    ) -> Result<Option<(i64, String, String, Option<String>)>> {
+    ) -> Result<Option<(String, String, String, Option<String>)>> {
         let mut stmt = self
             .conn
-            .prepare("SELECT id, name, game, data FROM characters WHERE name = ?1 AND game = ?2")?;
+            .prepare("SELECT uuid, name, game, data FROM characters WHERE name = ?1 AND game = ?2")?;
 
         let mut rows = stmt.query((name, game))?;
 
@@ -549,21 +562,21 @@ mod tests {
     #[test]
     fn test_name_combiner_basic() {
         // Test basic string concatenation
-        let result = Database::name_combiner("path/", "file.db");
+        let result = Database::name_combiner("path/", "file");
         assert_eq!(result, "path/file.db");
     }
 
     #[test]
     fn test_name_combiner_with_spaces() {
         // Test that spaces are replaced with underscores
-        let result = Database::name_combiner("data/saves/", "My Character.db");
+        let result = Database::name_combiner("data/saves/", "My Character");
         assert_eq!(result, "data/saves/My_Character.db");
     }
 
     #[test]
     fn test_name_combiner_multiple_spaces() {
         // Test handling of multiple spaces
-        let result = Database::name_combiner("saves/", "Veteran  Investigator  2.db");
+        let result = Database::name_combiner("saves/", "Veteran  Investigator  2");
         assert_eq!(result, "saves/Veteran__Investigator__2.db");
     }
 
@@ -573,11 +586,12 @@ mod tests {
     fn test_insert_character_basic() {
         let db = setup_test_db();
 
-        // Insert a character and verify we get a valid ID
-        let id = db.insert_character("Alice", "Knives Out", None)
+        // Insert a character and verify we get a valid UUID
+        let uuid = db.insert_character("Alice", "Knives Out", None)
             .expect("Failed to insert character");
 
-        assert_eq!(id, 1, "First character should have ID 1");
+        assert!(!uuid.is_empty(), "UUID should not be empty");
+        assert!(Uuid::parse_str(&uuid).is_ok(), "Should return a valid UUID");
     }
 
     #[test]
@@ -585,10 +599,10 @@ mod tests {
         let db = setup_test_db();
 
         let json_data = r#"{"level": 5, "class": "warrior"}"#;
-        let id = db.insert_character("Bob", "RPG Game", Some(json_data))
+        let uuid = db.insert_character("Bob", "RPG Game", Some(json_data))
             .expect("Failed to insert character with data");
 
-        assert!(id > 0, "Should return a positive ID");
+        assert!(!uuid.is_empty(), "Should return a valid UUID");
     }
 
     #[test]
@@ -630,8 +644,9 @@ mod tests {
 
         assert!(result.is_some(), "Character should be found");
 
-        let (id, name, game, data) = result.unwrap();
-        assert_eq!(id, 1);
+        let (uuid, name, game, data) = result.unwrap();
+        assert!(!uuid.is_empty(), "UUID should not be empty");
+        assert!(Uuid::parse_str(&uuid).is_ok(), "Should have a valid UUID");
         assert_eq!(name, "Alice");
         assert_eq!(game, "Knives Out");
         assert_eq!(data, Some(json_data.to_string()));
@@ -962,5 +977,31 @@ mod tests {
         // Verify sword is gone
         let final_inventory = db.get_character_objects("Dungeon Crawler", "Adventurer").unwrap();
         assert_eq!(final_inventory.len(), 2, "Should have 2 items after selling sword");
+    }
+
+    #[test]
+    fn test_foreign_key_cascade_delete() {
+        // Test that deleting a character cascades to character_objects
+        let db = setup_test_db();
+
+        // Create a character
+        db.insert_character("TestChar", "TestGame", None).unwrap();
+
+        // Create an object
+        let obj_id = db.insert_object("Sword", "weapon", None).unwrap();
+
+        // Add object to character
+        db.add_object_to_character("TestGame", "TestChar", obj_id, 1).unwrap();
+
+        // Verify the object exists in character_objects
+        let objects_before = db.get_character_objects("TestGame", "TestChar").unwrap();
+        assert_eq!(objects_before.len(), 1, "Should have 1 object before delete");
+
+        // Delete the character - should cascade and delete character_objects
+        db.delete_character("TestChar", "TestGame").unwrap();
+
+        // Verify the character_objects record was deleted via cascade
+        let objects_after = db.get_character_objects("TestGame", "TestChar").unwrap();
+        assert_eq!(objects_after.len(), 0, "Character objects should be cascade deleted");
     }
 }

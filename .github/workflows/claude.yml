@@ -12,11 +12,19 @@ on:
 
 jobs:
   claude:
+    # Security: Only allow repository owner to trigger Claude
+    # This prevents unauthorized API usage on public repositories
+    # For additional users, add their usernames to the list below
     if: |
-      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
-      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
-      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
-      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+      (
+        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
+        (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+      ) && (
+        github.actor == github.repository_owner ||
+        contains(fromJson('["Hampternt"]'), github.actor)
+      )
     runs-on: ubuntu-latest
     permissions:
       contents: read

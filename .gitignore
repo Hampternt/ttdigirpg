@@ -3,6 +3,7 @@
 Cargo.lock
 
 # Database files
+*.db
 *.Database
 *.db-shm
 *.db-wal

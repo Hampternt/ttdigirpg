@@ -1,0 +1,390 @@
+digraph {
+
+    graph [
+        label="ttdigirpg",
+        labelloc=t,
+
+        pad=0.4,
+
+        // Consider rendering the graph using a different layout algorithm, such as:
+        // [dot, neato, twopi, circo, fdp, sfdp]
+        layout=neato,
+        overlap=false,
+        splines="line",
+        rankdir=LR,
+
+        fontname="Helvetica", 
+        fontsize="36",
+    ];
+
+    node [
+        fontname="monospace",
+        fontsize="10",
+        shape="record",
+        style="filled",
+    ];
+
+    edge [
+        fontname="monospace",
+        fontsize="10",
+    ];
+
+    "alloc::alloc::Global" [label="external struct|alloc::alloc::Global", fillcolor="#81c169"]; // "struct" node
+    "alloc::string::String" [label="external struct|alloc::string::String", fillcolor="#81c169"]; // "struct" node
+    "alloc::vec::Vec" [label="external struct|alloc::vec::Vec", fillcolor="#81c169"]; // "struct" node
+    "bool" [label="external builtin|bool", fillcolor="#81c169"]; // "builtin" node
+    "char" [label="external builtin|char", fillcolor="#81c169"]; // "builtin" node
+    "core::fmt::Arguments" [label="external struct|core::fmt::Arguments", fillcolor="#81c169"]; // "struct" node
+    "core::fmt::Error" [label="external struct|core::fmt::Error", fillcolor="#81c169"]; // "struct" node
+    "core::fmt::Formatter" [label="external struct|core::fmt::Formatter", fillcolor="#81c169"]; // "struct" node
+    "core::fmt::builders::DebugStruct" [label="external struct|core::fmt::builders::DebugStruct", fillcolor="#81c169"]; // "struct" node
+    "core::fmt::rt::Argument" [label="external struct|core::fmt::rt::Argument", fillcolor="#81c169"]; // "struct" node
+    "core::fmt::rt::Count" [label="external enum|core::fmt::rt::Count", fillcolor="#81c169"]; // "enum" node
+    "core::fmt::rt::Placeholder" [label="external struct|core::fmt::rt::Placeholder", fillcolor="#81c169"]; // "struct" node
+    "core::iter::adapters::flatten::FlatMap" [label="external struct|core::iter::adapters::flatten::FlatMap", fillcolor="#81c169"]; // "struct" node
+    "core::iter::adapters::map::Map" [label="external struct|core::iter::adapters::map::Map", fillcolor="#81c169"]; // "struct" node
+    "core::marker::PhantomData" [label="external struct|core::marker::PhantomData", fillcolor="#81c169"]; // "struct" node
+    "core::ops::control_flow::ControlFlow" [label="external enum|core::ops::control_flow::ControlFlow", fillcolor="#81c169"]; // "enum" node
+    "core::option::Option" [label="external enum|core::option::Option", fillcolor="#81c169"]; // "enum" node
+    "core::result::Result" [label="external enum|core::result::Result", fillcolor="#81c169"]; // "enum" node
+    "core::slice::iter::Iter" [label="external struct|core::slice::iter::Iter", fillcolor="#81c169"]; // "struct" node
+    "core::str::iter::Chars" [label="external struct|core::str::iter::Chars", fillcolor="#81c169"]; // "struct" node
+    "i32" [label="external builtin|i32", fillcolor="#81c169"]; // "builtin" node
+    "i64" [label="external builtin|i64", fillcolor="#81c169"]; // "builtin" node
+    "rusqlite::Connection" [label="external struct|rusqlite::Connection", fillcolor="#81c169"]; // "struct" node
+    "rusqlite::Result" [label="external type|rusqlite::Result", fillcolor="#81c169"]; // "type" node
+    "rusqlite::error::Error" [label="external enum|rusqlite::error::Error", fillcolor="#81c169"]; // "enum" node
+    "rusqlite::statement::Statement" [label="external struct|rusqlite::statement::Statement", fillcolor="#81c169"]; // "struct" node
+    "serde_core::de::Deserialize" [label="external trait|serde_core::de::Deserialize", fillcolor="#81c169"]; // "trait" node
+    "serde_core::ser::Serialize" [label="external trait|serde_core::ser::Serialize", fillcolor="#81c169"]; // "trait" node
+    "std::path::Path" [label="external struct|std::path::Path", fillcolor="#81c169"]; // "struct" node
+    "str" [label="external builtin|str", fillcolor="#81c169"]; // "builtin" node
+    "ttdigirpg" [label="crate|ttdigirpg", fillcolor="#5397c8"]; // "crate" node
+    "ttdigirpg::demo" [label="pub mod|ttdigirpg::demo", fillcolor="#81c169"]; // "mod" node
+    "ttdigirpg::demo::demo" [label="pub fn|ttdigirpg::demo::demo", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities" [label="pub mod|ttdigirpg::entities", fillcolor="#81c169"]; // "mod" node
+    "ttdigirpg::entities::character" [label="pub mod|ttdigirpg::entities::character", fillcolor="#81c169"]; // "mod" node
+    "ttdigirpg::entities::character::Character" [label="pub struct|ttdigirpg::entities::character::Character", fillcolor="#81c169"]; // "struct" node
+    "ttdigirpg::entities::character::Character::clone" [label="pub(self) fn|ttdigirpg::entities::character::Character::clone", fillcolor="#db5367"]; // "fn" node
+    "ttdigirpg::entities::character::Character::display" [label="pub fn|ttdigirpg::entities::character::Character::display", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::character::Character::fmt" [label="pub(self) fn|ttdigirpg::entities::character::Character::fmt", fillcolor="#db5367"]; // "fn" node
+    "ttdigirpg::entities::character::Character::format_dots" [label="pub(self) fn|ttdigirpg::entities::character::Character::format_dots", fillcolor="#db5367"]; // "fn" node
+    "ttdigirpg::entities::character::Character::new" [label="pub fn|ttdigirpg::entities::character::Character::new", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database" [label="pub mod|ttdigirpg::entities::database", fillcolor="#81c169"]; // "mod" node
+    "ttdigirpg::entities::database::Database" [label="pub struct|ttdigirpg::entities::database::Database", fillcolor="#81c169"]; // "struct" node
+    "ttdigirpg::entities::database::Database::add_object_to_character" [label="pub fn|ttdigirpg::entities::database::Database::add_object_to_character", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::create_tables" [label="pub(self) fn|ttdigirpg::entities::database::Database::create_tables", fillcolor="#db5367"]; // "fn" node
+    "ttdigirpg::entities::database::Database::delete_character" [label="pub fn|ttdigirpg::entities::database::Database::delete_character", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::delete_object" [label="pub fn|ttdigirpg::entities::database::Database::delete_object", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::get_character" [label="pub fn|ttdigirpg::entities::database::Database::get_character", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::get_character_objects" [label="pub fn|ttdigirpg::entities::database::Database::get_character_objects", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::get_object" [label="pub fn|ttdigirpg::entities::database::Database::get_object", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::insert_character" [label="pub fn|ttdigirpg::entities::database::Database::insert_character", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::insert_object" [label="pub fn|ttdigirpg::entities::database::Database::insert_object", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::name_combiner" [label="pub fn|ttdigirpg::entities::database::Database::name_combiner", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::new" [label="pub fn|ttdigirpg::entities::database::Database::new", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::new_with_name" [label="pub fn|ttdigirpg::entities::database::Database::new_with_name", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::remove_object_from_character" [label="pub fn|ttdigirpg::entities::database::Database::remove_object_from_character", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::update_character" [label="pub fn|ttdigirpg::entities::database::Database::update_character", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::update_object" [label="pub fn|ttdigirpg::entities::database::Database::update_object", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::database::Database::update_object_quantity" [label="pub fn|ttdigirpg::entities::database::Database::update_object_quantity", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::economy" [label="pub mod|ttdigirpg::entities::economy", fillcolor="#81c169"]; // "mod" node
+    "ttdigirpg::entities::economy::EconomicEntity" [label="pub struct|ttdigirpg::entities::economy::EconomicEntity", fillcolor="#81c169"]; // "struct" node
+    "ttdigirpg::entities::economy::EconomicEntity::deserialize" [label="pub(super) fn|ttdigirpg::entities::economy::EconomicEntity::deserialize", fillcolor="#fe9454"]; // "fn" node
+    "ttdigirpg::entities::economy::EconomicEntity::serialize" [label="pub(super) fn|ttdigirpg::entities::economy::EconomicEntity::serialize", fillcolor="#fe9454"]; // "fn" node
+    "ttdigirpg::entities::economy::EntityId" [label="pub struct|ttdigirpg::entities::economy::EntityId", fillcolor="#81c169"]; // "struct" node
+    "ttdigirpg::entities::economy::EntityId::deserialize" [label="pub(super) fn|ttdigirpg::entities::economy::EntityId::deserialize", fillcolor="#fe9454"]; // "fn" node
+    "ttdigirpg::entities::economy::EntityId::new" [label="pub fn|ttdigirpg::entities::economy::EntityId::new", fillcolor="#81c169"]; // "fn" node
+    "ttdigirpg::entities::economy::EntityId::serialize" [label="pub(super) fn|ttdigirpg::entities::economy::EntityId::serialize", fillcolor="#fe9454"]; // "fn" node
+    "ttdigirpg::entities::economy::__Visitor" [label="pub(self) struct|ttdigirpg::entities::economy::__Visitor", fillcolor="#db5367"]; // "struct" node
+    "ttdigirpg::entities::economy::__Visitor" [label="pub(self) struct|ttdigirpg::entities::economy::__Visitor", fillcolor="#db5367"]; // "struct" node
+    "ttdigirpg::systems" [label="pub mod|ttdigirpg::systems", fillcolor="#81c169"]; // "mod" node
+    "u16" [label="external builtin|u16", fillcolor="#81c169"]; // "builtin" node
+    "u32" [label="external builtin|u32", fillcolor="#81c169"]; // "builtin" node
+    "usize" [label="external builtin|usize", fillcolor="#81c169"]; // "builtin" node
+    "uuid::Uuid" [label="external struct|uuid::Uuid", fillcolor="#81c169"]; // "struct" node
+
+    "ttdigirpg" -> "ttdigirpg::demo" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg" -> "ttdigirpg::entities" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg" -> "ttdigirpg::systems" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::demo" -> "ttdigirpg::demo::demo" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::demo" -> "ttdigirpg::entities::character::Character" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "core::fmt::Arguments" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "core::fmt::rt::Argument" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "core::fmt::rt::Placeholder" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "ttdigirpg::entities::character::Character" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "u32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::demo::demo" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities" -> "ttdigirpg::entities::character" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities" -> "ttdigirpg::entities::database" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities" -> "ttdigirpg::entities::economy" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::character" -> "ttdigirpg::entities::character::Character" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::character::Character" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character" -> "ttdigirpg::entities::character::Character::clone" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::character::Character" -> "ttdigirpg::entities::character::Character::display" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::character::Character" -> "ttdigirpg::entities::character::Character::fmt" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::character::Character" -> "ttdigirpg::entities::character::Character::format_dots" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::character::Character" -> "ttdigirpg::entities::character::Character::new" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::character::Character::clone" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::clone" -> "ttdigirpg::entities::character::Character" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::clone" -> "u32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::display" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::display" -> "core::fmt::Arguments" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::display" -> "core::fmt::rt::Argument" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::display" -> "core::fmt::rt::Count" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::display" -> "core::fmt::rt::Placeholder" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::display" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::display" -> "ttdigirpg::entities::character::Character" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::display" -> "u16" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::display" -> "u32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::display" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::fmt" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::fmt" -> "core::fmt::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::fmt" -> "core::fmt::Formatter" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::fmt" -> "core::fmt::builders::DebugStruct" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::fmt" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::fmt" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::fmt" -> "ttdigirpg::entities::character::Character" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::fmt" -> "u32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::format_dots" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::format_dots" -> "core::fmt::Arguments" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::format_dots" -> "core::fmt::rt::Argument" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::format_dots" -> "core::fmt::rt::Count" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::format_dots" -> "core::fmt::rt::Placeholder" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::format_dots" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::format_dots" -> "ttdigirpg::entities::character::Character" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::format_dots" -> "u32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::format_dots" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::new" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::new" -> "ttdigirpg::entities::character::Character" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::character::Character::new" -> "u32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database" -> "rusqlite::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database" -> "std::path::Path" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database" -> "ttdigirpg::entities::database::Database" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database" -> "uuid::Uuid" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::add_object_to_character" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::create_tables" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::delete_character" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::delete_object" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::get_character" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::get_character_objects" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::get_object" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::insert_character" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::insert_object" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::name_combiner" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::new" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::new_with_name" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::remove_object_from_character" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::update_character" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::update_object" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database" -> "ttdigirpg::entities::database::Database::update_object_quantity" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::database::Database::add_object_to_character" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::add_object_to_character" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::add_object_to_character" -> "i32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::add_object_to_character" -> "i64" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::add_object_to_character" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::add_object_to_character" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::add_object_to_character" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::add_object_to_character" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::add_object_to_character" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::create_tables" -> "core::fmt::Arguments" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::create_tables" -> "core::fmt::rt::Argument" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::create_tables" -> "core::fmt::rt::Placeholder" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::create_tables" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::create_tables" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::create_tables" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::create_tables" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::create_tables" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::create_tables" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_character" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_character" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_character" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_character" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_character" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_character" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_character" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_object" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_object" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_object" -> "i64" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_object" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_object" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_object" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_object" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::delete_object" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "bool" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "core::option::Option" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "i32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "rusqlite::statement::Statement" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "alloc::alloc::Global" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "alloc::vec::Vec" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "core::option::Option" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "i32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "i64" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "rusqlite::statement::Statement" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_character_objects" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "bool" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "core::option::Option" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "i32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "i64" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "rusqlite::statement::Statement" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::get_object" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_character" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_character" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_character" -> "core::option::Option" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_character" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_character" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_character" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_character" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_character" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_character" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_character" -> "uuid::Uuid" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_object" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_object" -> "core::option::Option" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_object" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_object" -> "i64" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_object" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_object" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_object" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_object" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::insert_object" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "bool" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "char" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "core::fmt::Arguments" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "core::fmt::rt::Argument" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "core::fmt::rt::Count" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "core::fmt::rt::Placeholder" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "core::iter::adapters::flatten::FlatMap" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "core::iter::adapters::map::Map" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "core::slice::iter::Iter" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "core::str::iter::Chars" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "u32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::name_combiner" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "bool" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "core::fmt::Arguments" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "core::fmt::rt::Argument" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "core::fmt::rt::Count" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "core::fmt::rt::Placeholder" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "u32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "bool" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "core::fmt::Arguments" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "core::fmt::rt::Argument" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "core::fmt::rt::Count" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "core::fmt::rt::Placeholder" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "u32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::new_with_name" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::remove_object_from_character" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::remove_object_from_character" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::remove_object_from_character" -> "i64" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::remove_object_from_character" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::remove_object_from_character" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::remove_object_from_character" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::remove_object_from_character" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::remove_object_from_character" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_character" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_character" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_character" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_character" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_character" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_character" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_character" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object" -> "i64" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object_quantity" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object_quantity" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object_quantity" -> "i32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object_quantity" -> "i64" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object_quantity" -> "rusqlite::Connection" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object_quantity" -> "rusqlite::error::Error" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object_quantity" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object_quantity" -> "ttdigirpg::entities::database::Database" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::database::Database::update_object_quantity" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy" -> "serde_core::de::Deserialize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy" -> "serde_core::ser::Serialize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy" -> "ttdigirpg::entities::economy::EconomicEntity" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::economy" -> "ttdigirpg::entities::economy::EntityId" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::economy" -> "uuid::Uuid" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity" -> "ttdigirpg::entities::economy::EconomicEntity::deserialize" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::economy::EconomicEntity" -> "ttdigirpg::entities::economy::EconomicEntity::serialize" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::economy::EconomicEntity" -> "ttdigirpg::entities::economy::EntityId" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::deserialize" -> "core::marker::PhantomData" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::deserialize" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::deserialize" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::deserialize" -> "ttdigirpg::entities::economy::EconomicEntity" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::deserialize" -> "ttdigirpg::entities::economy::__Visitor" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::serialize" -> "alloc::string::String" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::serialize" -> "bool" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::serialize" -> "core::ops::control_flow::ControlFlow" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::serialize" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::serialize" -> "i32" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::serialize" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::serialize" -> "ttdigirpg::entities::economy::EconomicEntity" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::serialize" -> "ttdigirpg::entities::economy::EntityId" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EconomicEntity::serialize" -> "usize" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId" -> "ttdigirpg::entities::economy::EntityId::deserialize" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::economy::EntityId" -> "ttdigirpg::entities::economy::EntityId::new" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::economy::EntityId" -> "ttdigirpg::entities::economy::EntityId::serialize" [label="owns", color="#000000", style="solid"] [constraint=true]; // "owns" edge
+    "ttdigirpg::entities::economy::EntityId" -> "uuid::Uuid" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::deserialize" -> "core::marker::PhantomData" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::deserialize" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::deserialize" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::deserialize" -> "ttdigirpg::entities::economy::EntityId" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::deserialize" -> "ttdigirpg::entities::economy::__Visitor" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::new" -> "ttdigirpg::entities::economy::EntityId" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::new" -> "uuid::Uuid" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::serialize" -> "core::result::Result" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::serialize" -> "str" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::serialize" -> "ttdigirpg::entities::economy::EntityId" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+    "ttdigirpg::entities::economy::EntityId::serialize" -> "uuid::Uuid" [label="uses", color="#7f7f7f", style="dashed"] [constraint=false]; // "uses" edge
+
+}

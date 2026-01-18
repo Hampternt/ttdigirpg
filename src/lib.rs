@@ -10,4 +10,7 @@ pub mod entities;
 #[path = "lib/systems/mod.rs"]
 pub mod systems;
 
+#[path = "lib/api/mod.rs"]
+pub mod api;
+
 pub mod demo;

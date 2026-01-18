@@ -43,13 +43,12 @@ fn main() {
     }
 }
 
-/// Runs the API server for FoundryVTT integration
+/// Runs the API server for testing
 #[tokio::main]
 async fn run_server() {
     use ttdigirpg::api::server::run_api_server;
 
-    let db_path = "src/database/game_data.db";
-    if let Err(e) = run_api_server(db_path).await {
+    if let Err(e) = run_api_server().await {
         eprintln!("Server error: {}", e);
         std::process::exit(1);
     }

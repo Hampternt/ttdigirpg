@@ -42,7 +42,7 @@ impl Database {
     /// let db = Database::new(":memory:").expect("Failed to create database");
     /// // Database created successfully if we get here
     /// ```
-    pub fn new(db_path: &str) -> Result<Self> {
+    pub fn new(db_path: &str) -> Result<Database> {
         // Check if database file already exists
         let db_exists = Path::new(db_path).exists();
         let conn = Connection::open(db_path)?;

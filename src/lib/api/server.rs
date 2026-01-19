@@ -20,6 +20,7 @@ pub async fn run_api_server() -> Result<(), Box<dyn std::error::Error>> {
     // Build the router with our test endpoint
     let app = Router::new()
         .route("/api/test/echo", post(handlers::test_echo))
+        .route("/api/db/create", post(handlers::create_db))
         .layer(cors);
 
     // Bind to localhost:8080

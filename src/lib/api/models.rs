@@ -11,3 +11,8 @@ pub struct TestResponse {
     pub message: String,
     pub echo: Value,  // Echo back whatever was sent
 }
+
+#[derive(Debug, Serialize)]
+pub struct PingResponse {
+    pub message: String,
+}

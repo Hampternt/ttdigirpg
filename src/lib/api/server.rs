@@ -1,5 +1,7 @@
-use axum::{routing::post, Router, http::{Method, header}};
+use axum::{Router, http::{Method, header}, routing::{get, post}};
 use tower_http::cors::CorsLayer;
+
+use crate::api::handlers::ping;
 
 use super::handlers;
 
@@ -21,6 +23,7 @@ pub async fn run_api_server() -> Result<(), Box<dyn std::error::Error>> {
     let app = Router::new()
         .route("/api/test/echo", post(handlers::test_echo))
         .route("/api/db/create", post(handlers::create_db))
+        .route("/api/ping", get(handlers::ping))
         .layer(cors);
 
     // Bind to localhost:8080
